@@ -1,0 +1,29 @@
+{
+  "name": "directives",
+  "version": "0.1.0",
+  "description": "Directives for the various components of the University of Alabama Libraries' website",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ualibweb/ui-components.git"
+  },
+  "contributors": [
+    {
+      "name": "Will Jones"
+    },
+    {
+      "name": "Boris Krylov"
+    }
+  ],
+  "license": "ECL-2.0",
+  "bugs": {
+    "url": "https://github.com/ualibweb/ui-components/issues"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-html2js": "~0.2.4",
+    "grunt-contrib-less": "~1.0.0",
+    "kss": "~2.0.2",
+    "grunt-exec": "~0.4.6"
+  },
+  "private": true
+}

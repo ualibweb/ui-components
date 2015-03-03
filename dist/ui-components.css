@@ -1,0 +1,119 @@
+
+.mega-menu {
+  border: none;
+  margin-bottom: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.mega-menu .magamenu-navbar > li.dropdown > a {
+  padding-right: 40px;
+}
+.mega-menu .magamenu-navbar > li > a {
+  font-size: 16px;
+  padding: 30px;
+}
+.mega-menu .magamenu-navbar > li > a:hover.dropdown-toggle::before,
+.mega-menu .magamenu-navbar > li > a:focus.dropdown-toggle::before,
+.mega-menu .magamenu-navbar > li > a:hover.dropdown-toggle::after,
+.mega-menu .magamenu-navbar > li > a:focus.dropdown-toggle::after {
+  background: #993333;
+}
+.mega-menu .magamenu-navbar > li > a.dropdown-toggle::before,
+.mega-menu .magamenu-navbar > li > a.active.dropdown-toggle::before,
+.mega-menu .magamenu-navbar > li > a.dropdown-toggle::after,
+.mega-menu .magamenu-navbar > li > a.active.dropdown-toggle::after {
+  background: #f9f9f9;
+}
+.mega-menu .magamenu-navbar > li > a.dropdown-toggle::before,
+.mega-menu .magamenu-navbar > li > a.dropdown-toggle::after {
+  width: 9px;
+}
+.mega-menu .magamenu-navbar > li > a.dropdown-toggle::before {
+  right: 20px;
+}
+.mega-menu .magamenu-navbar > li > a.dropdown-toggle::after {
+  right: 15px;
+}
+.mega-menu .magamenu-navbar > li.open > a::before,
+.mega-menu .magamenu-navbar > li.open > a::after {
+  width: 14px;
+}
+.mega-menu .magamenu-navbar .dropdown-menu {
+  opacity: 0;
+  display: block;
+  visibility: hidden;
+  -webkit-transition: opacity  .2s .1s, visibility 0s  .2s;
+  -moz-transition: opacity  .2s .1s, visibility 0s  .2s;
+  transition: opacity  .2s .1s, visibility 0s  .2s;
+}
+.mega-menu .magamenu-navbar .dropdown-menu .yamm-content a {
+  color: #333;
+  position: relative;
+  display: block;
+  padding: 15px;
+}
+.mega-menu .magamenu-navbar .dropdown-menu .yamm-content a > h4,
+.mega-menu .magamenu-navbar .dropdown-menu .yamm-content a > p {
+  margin-left: 45px;
+}
+.mega-menu .magamenu-navbar .dropdown-menu .yamm-content a > h4 {
+  color: #993333;
+  margin-bottom: 0;
+}
+.mega-menu .magamenu-navbar .dropdown-menu .yamm-content a > .fa {
+  display: block;
+  position: absolute;
+  top: 30px;
+  font-size: 30px;
+  color: #555;
+}
+.mega-menu .magamenu-navbar .dropdown-menu .yamm-content a:hover,
+.mega-menu .magamenu-navbar .dropdown-menu .yamm-content a:focus {
+  background-color: #ececec;
+  text-decoration: none;
+}
+.mega-menu .magamenu-navbar .dropdown-menu .mm-heading {
+  min-height: 45px;
+  display: table;
+  margin-bottom: 5px;
+}
+.mega-menu .magamenu-navbar .dropdown-menu .mm-heading > .fa,
+.mega-menu .magamenu-navbar .dropdown-menu .mm-heading > h4 {
+  color: #993333;
+  display: table-cell;
+  vertical-align: middle;
+}
+.mega-menu .magamenu-navbar .dropdown-menu .mm-heading > .fa {
+  font-size: 30px;
+  color: #333;
+}
+.mega-menu .magamenu-navbar .dropdown-menu .mm-heading > h4 {
+  padding-left: 15px;
+  color: #993333;
+}
+.mega-menu .magamenu-navbar .dropdown-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+.mega-menu .magamenu-navbar .dropdown-menu ul > li:last-child {
+  border-bottom: none;
+}
+.mega-menu .magamenu-navbar .dropdown-menu ul > li > a {
+  color: #333;
+  position: relative;
+  display: block;
+  padding: 5px;
+  font-size: 16px;
+}
+.mega-menu .magamenu-navbar .dropdown-menu ul > li > a:hover,
+.mega-menu .magamenu-navbar .dropdown-menu ul > li > a:focus {
+  background-color: #ececec;
+  text-decoration: none;
+}
+.mega-menu .magamenu-navbar .open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity  .2s 0s, visibility 0s 0s;
+  -moz-transition: opacity  .2s 0s, visibility 0s 0s;
+  transition: opacity  .2s 0s, visibility 0s 0s;
+}

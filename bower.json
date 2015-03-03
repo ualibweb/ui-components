@@ -1,0 +1,30 @@
+{
+  "name": "directives",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ualibweb/directives",
+  "authors": [
+    "Will Jones",
+    "Boris Krylov"
+  ],
+  "description": "Directives for the University of Alabama Libraries' website",
+  "moduleType": [
+    "node"
+  ],
+  "license": "ECL-2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2",
+    "fontawesome": "~4.3.0",
+    "Yamm3": "https://github.com/geedmo/yamm3/archive/master.zip",
+    "angular-scroll": "~0.6.5",
+    "angular-strap": "~2.2.0",
+    "angular-animate": "~1.3.14"
+  }
+}

@@ -1,0 +1,14 @@
+<div class="row slice slice-blue" ng-model="cardData">
+    <h2 ng-bind-html="cardData.title"></h2>
+    <div ng-class="cardData.class" ng-repeat="items in cardData.items">
+        <div class="media step-card">
+            <div class="step-num media-object pull-left">{{$index + 1}}</div>
+            <div class="media-body step-text">
+                <ul class="list-unstyled">
+                    <li ng-repeat="item in items"><span ng-bind-html="item"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<span ng-transclude></span>

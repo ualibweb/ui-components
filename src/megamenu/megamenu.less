@@ -1,0 +1,240 @@
+// Mega Menu
+//
+// The mega menu should only appear once, as the website's main header navigation. The mega menu can render any of the website's
+// other components, but avoid using these for better UX: <mark>TODO:</mark> list components not appropriate for mega menu.
+//
+// <mark>TODO:</mark> Finish responsive support
+//
+// A minimum of three html elements are required to use the megamenu component.
+// * `<megamenu>` - the root megamenu element
+//    * `<megamenu-navbar>` - this extends [Bootstrap's navbar component](http://getbootstrap.com/components/#navbar). All bootstrap navbar classes may be applied.
+//        * `<megamenu-dropdown>` - megamenu dropdown
+//        * `<megamenu-button>` - megamenu buttons or links
+//
+// Markup: megamenu.hbs
+//
+// CodeTemplate:
+// <megamenu>
+//    <megamenu-navbar title="Dropdown Title">
+//      <megamenu-dropdown>
+//        ...HTML/components here...
+//      </megamenu-dropdown>
+//    <megamenu-navbar>
+//    <megamenu-navbar class="navbar-right">
+//      <megamenu-button link="#login">
+//         <span class="fa fa-user"></span>
+//      </megamenu-button>
+//    </megamenu-navbar>
+// </megamenu>
+//
+// Styleguide components.megamenu
+
+
+
+// Mega Menu Dropdown
+//
+// TODO:</mark> better describe megamenu-dropdown options/params.
+//
+// Markup: megamenu-dropdown.hbs
+//
+// CodeTemplate:
+//      <megamenu-dropdown title="Dropdown Title">
+//        ...Use the title attribute to display in the megamenu-navbar...
+//      </megamenu-dropdown>
+//      <megamenu-dropdown link="#more-link-path" title="Title">
+//        ...You can set a "More" or "All" link that will display at the bottom of the dropdown...
+//      </megamenu-dropdown>
+//      <megamenu-dropdown title="I am not visible!" icon="fa-book">
+//        ...You can have icons, but the title will not appear if an icon is defined...
+//      </megamenu-dropdown>
+//
+// Styleguide components.megamenu-dropdown
+
+// Mega Menu Button
+//
+// TODO:</mark> better describe megamenu dropdown options/params.
+//
+// Markup: megamenu-button.hbs
+//
+// CodeTemplate:
+//      <megamenu-button>
+//        <span class="fa fa-user"></span>
+//      </megamenu-button>
+//      <megamenu-button>
+//        Text Button
+//      </megamenu-button>
+//
+// Styleguide components.megamenu-button
+.mega-menu{
+  border: none;
+  margin-bottom: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  // Megamenu Navbar
+  //
+  // Each `navbar` represents a set of navigation links/buttons. You can control where a `navbar` appears on the menu by applying different classes,
+  // such as `navbar-left` and `navbar-right`.
+  //
+  // The megamenu's navbar extends [Bootstrap's navbar component](http://getbootstrap.com/components/#navbar), so you can
+  // apply any Bootstrap navbar classes and everything will fall into place.
+  //
+  // To demonstrate this, we've translated [Bootstrap's navbar example]((http://getbootstrap.com/components/#navbar-default) to our megamenu,
+  //
+  // Markup: megamenu-navbar.hbs
+  //
+  // CodeTemplate:
+  // <megamenu-navbar>
+  //    ...Navbar will appear as expected via order of HTML tags...
+  // </megamenu-navbar>
+  // <megamenu-navbar class="navbar-left">
+  //    ...Navbar will float to the left...
+  // </megamenu-navbar>
+  // <megamenu-navbar class="navbar-right">
+  //    ...Navbar will float to the right
+  // </megamenu-navbar>
+  //
+  // Styleguide components.megamenu-navbar
+
+  .magamenu-navbar {
+    > li {
+      &.dropdown > a{
+        padding-right: 40px;
+      }
+
+      > a {
+        font-size: 16px;
+        padding: 30px;
+
+        //TODO: possibly move the V to X symbols to dropdown component
+        &:hover,
+        &:focus {
+          &.dropdown-toggle::before,
+          &.dropdown-toggle::after{
+            background: #993333;
+          }
+        }
+
+        &,
+        &.active{
+          &.dropdown-toggle::before,
+          &.dropdown-toggle::after{
+            background: #f9f9f9;
+          }
+        }
+
+        &.dropdown-toggle::before,
+        &.dropdown-toggle::after {
+          width: 9px;
+        }
+
+        &.dropdown-toggle::before {
+          right: 20px;
+        }
+
+        &.dropdown-toggle::after{
+          right: 15px;
+        }
+      }
+
+      &.open > a{
+        &::before, &::after{
+          width: 14px;
+        }
+      }
+    }
+
+    .dropdown-menu{
+      opacity: 0;
+      display: block;
+      visibility: hidden;
+      -webkit-transition: opacity  .2s .1s, visibility 0s  .2s;
+      -moz-transition: opacity  .2s .1s, visibility 0s  .2s;
+      transition: opacity  .2s .1s, visibility 0s  .2s;
+
+      .yamm-content {
+        a {
+          color: #333;
+          position: relative;
+          display: block;
+          padding: 15px;
+
+          & > h4, & > p {
+            margin-left: 45px;
+          }
+
+          & > h4 {
+            color: #993333;
+            margin-bottom: 0;
+          }
+
+          & > .fa {
+            display: block;
+            position: absolute;
+            top: 30px;
+            font-size: 30px;
+            color: #555;
+          }
+          &:hover,
+          &:focus {
+            background-color: darken(#f9f9f9, 5%);
+            text-decoration: none;
+          }
+        }
+      }
+      .mm-heading{
+        min-height: 45px;
+        display: table;
+        margin-bottom: 5px;
+
+        > .fa, > h4{
+          color: #993333;
+          display: table-cell;
+          vertical-align: middle;
+        }
+
+        > .fa{
+          font-size: 30px;
+          color: #333;
+        }
+
+        > h4{
+          padding-left: 15px;
+          color: #993333;
+        }
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        > li {
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          > a{
+            color: #333;
+            position: relative;
+            display: block;
+            padding: 5px;
+            font-size: 16px;
+
+            &:hover,
+            &:focus {
+              background-color: darken(#f9f9f9, 5%);
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+    .open .dropdown-menu{
+      opacity: 1;
+      visibility: visible;
+      -webkit-transition: opacity  .2s 0s, visibility 0s 0s;
+      -moz-transition: opacity  .2s 0s, visibility 0s 0s;
+      transition: opacity  .2s 0s, visibility 0s 0s;
+    }
+  }
+}

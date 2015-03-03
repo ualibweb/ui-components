@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500|Oxygen:400,700,300|Open+Sans|EB+Garamond|Lato:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://rawgit.com/ualibweb/roots-ualib/master/assets/css/main.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="vendor.css" rel="stylesheet">
+    <link href="ui-components.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+<!--<megamenu>
+    <megamenu-navbar>
+        <megamenu-dropdown title="Research Tools" link="#research">
+            <div class="row">
+                <div class="col-xs-3 menu-onesearch"><a
+                        href="https://wwwdev2.lib.ua.edu/sample-page/onesearch/"><span class="fa fa-search"></span><h4>
+                    OneSearch</h4>
+
+                    <p>Search everything the University Libraries’ offer from one palce</p></a></div>
+                <div class="col-xs-3 menu-scout"><a href="https://wwwdev2.lib.ua.edu/research-help/scout/"><span
+                        class="fa fa-binoculars"></span><h4>Scout</h4>
+
+                    <p>Search for books, articles, and more</p></a></div>
+                <div class="col-xs-3 menu-databases"><a
+                        href="https://wwwdev2.lib.ua.edu/research-help/databases/"><span class="fa fa-database"></span>
+                    <h4>Databases</h4>
+
+                    <p>Explore databases for a wide range of subjects</p></a></div>
+                <div class="col-xs-3 menu-google-scholar"><a
+                        href="https://wwwdev2.lib.ua.edu/research-help/google-scholar/"><span
+                        class="fa fa-google"></span><h4>Google Scholar</h4>
+
+                    <p>Search Google Scholar for articles and academic journals</p></a></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 menu-subject-and-course-guides"><a
+                        href="https://wwwdev2.lib.ua.edu/research-help/subject-guides/"><span
+                        class="fa fa-compass"></span><h4>Subject and Course Guides</h4>
+
+                    <p>Explore our vast array of academic subject and course guides</p></a></div>
+                <div class="col-xs-3 menu-subject-specialists"><a
+                        href="https://wwwdev2.lib.ua.edu/research-help/subject-specialists/"><span
+                        class="fa fa-comments"></span><h4>Subject Specialists</h4>
+
+                    <p>Need help with your research? Get in contact with our subject specialists.</p></a></div>
+                <div class="col-xs-3 menu-government-information-statistics-and-data"><a
+                        href="https://wwwdev2.lib.ua.edu/research-help/government-information/"><span
+                        class="fa fa-university"></span><h4>Government Information, Statistics and Data</h4></a></div>
+                <div class="col-xs-3 menu-tutorials-and-instructional-videos"><a
+                        href="https://wwwdev2.lib.ua.edu/research-help/tutorials/"><span class="fa fa-magic"></span><h4>
+                    Tutorials and Instructional Videos</h4></a></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 menu-citation-finder"><a
+                        href="https://wwwdev2.lib.ua.edu/research-help/citation-finder/"><span
+                        class="fa fa-quote-left"></span><h4>Citation Finder</h4></a></div>
+                <div class="col-xs-3 menu-music-library-search"><a
+                        href="https://wwwdev2.lib.ua.edu/libraries-and-collections/campus-libraries/music-library/music-library-search/"><span
+                        class="fa fa-music"></span><h4>Music Library Search</h4>
+
+                    <p>Search what our Music Library has to offer</p></a></div>
+            </div>
+        </megamenu-dropdown>
+        <megamenu-dropdown title="Using the Library">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="mm-heading"><span class="fa fa-desktop"></span><h4>Computers, Software, &amp; Equipment</h4></div>
+                    <ul>
+                        <li class="menu-computer-availability"><a href="https://wwwdev2.lib.ua.edu/services/computer-availability/computer-availability/">Computer Availability</a></li>
+                        <li class="menu-laptop-computers"><a href="https://wwwdev2.lib.ua.edu/services/computer-availability/laptop-computers/">Laptop Computers</a></li>
+                        <li class="menu-library-software-list"><a href="https://wwwdev2.lib.ua.edu/services/computer-availability/library-software-list/">Print, Scan, Copy</a></li>
+                        <li class="menu-library-software-list"><a href="https://wwwdev2.lib.ua.edu/services/computer-availability/library-software-list/">Software</a></li>
+                        <li class="menu-library-software-list"><a href="#">Cameras, Camcorders, Audio Recorders</a></li>
+                        <li class="menu-library-software-list"><a href="#">Calculators</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mm-heading"><span class="fa fa-puzzle-piece"></span><h4>Facilities</h4></div>
+                    <ul>
+                        <li><a href="https://wwwdev2.lib.ua.edu/services/sanford-media-center/">Sanford Media Center</a></li>
+                        <li><a href="https://wwwdev2.lib.ua.edu/services/digital-humanities-center/">Alabama Digital Humanities Center</a></li>
+                        <li><a href="https://wwwdev2.lib.ua.edu/services/practice-presentation-rooms/">Practice Presentation Rooms</a></li>
+                        <li><a href="https://wwwdev2.lib.ua.edu/services/find-a-place-to-study/">Find a Place to Study</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mm-heading"><span class="fa fa-spoon"></span><h4>Other</h4></div>
+                    <ul>
+                        <li><a href="https://wwwdev2.lib.ua.edu/services/disability-services/">Disability Services</a></li>
+                        <li><a href="https://wwwdev2.lib.ua.edu/services/digital-humanities-center/">Classes, Workshops, Tours</a></li>
+                        <li><a href="https://wwwdev2.lib.ua.edu/services/practice-presentation-rooms/">Interlibrary Borrowing</a></li>
+                        <li><a href="https://wwwdev2.lib.ua.edu/services/find-a-place-to-study/">Information for Faculty</a></li>
+                        <li><a href="https://wwwdev2.lib.ua.edu/services/find-a-place-to-study/">Information for Students</a></li>
+                    </ul>
+                </div>
+            </div>
+        </megamenu-dropdown>
+    </megamenu-navbar>
+    <megamenu-navbar class="navbar-right">
+        <megamenu-button>
+            <span class="fa fa-user"></span>
+        </megamenu-button>
+    </megamenu-navbar>
+</megamenu>-->
+
+
+<script src="vendor.js"></script>
+<script src="ui-components-templates.js"></script>
+<script src="ui-components.js"></script>
+
+</body>
+</html>

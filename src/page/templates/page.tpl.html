@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-md-9" ng-transclude></div>
+    <div class="col-md-3 page-section-menu">
+        <div data-spy="affix" data-offset-top="101">
+            <ul class="nav nav-pills nav-stacked">
+                <li ng-repeat="section in menu">
+                    <a ng-href="#{{section.link}}">{{section.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
