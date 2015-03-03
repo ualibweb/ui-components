@@ -43,7 +43,10 @@ angular.module("megamenu/templates/megamenu.tpl.html", []).run(["$templateCache"
     "                <span class=\"icon-bar\"></span>\n" +
     "                <span class=\"icon-bar\"></span>\n" +
     "            </button>\n" +
-    "            <a class=\"navbar-brand\" href=\"#\">Brand</a>\n" +
+    "            <a class=\"navbar-brand\" href=\"{{link}}\" ng-if=\"!brandImage\">{{brand}}</a>\n" +
+    "            <a class=\"navbar-brand\" href=\"{{link}}\" ng-if=\"brandImage\">\n" +
+    "                <img ng-src=\"{{brandImage}}\" class=\"img-responsive\" alt=\"{{brand}}\" title=\"{{brand}}\" />\n" +
+    "            </a>\n" +
     "        </div>\n" +
     "\n" +
     "        <div ng-transclude ng-cloak>\n" +

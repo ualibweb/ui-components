@@ -5,6 +5,9 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+.mega-menu .navbar-brand {
+  margin-top: 15px;
+}
 .mega-menu .magamenu-navbar > li.dropdown > a {
   padding-right: 40px;
 }

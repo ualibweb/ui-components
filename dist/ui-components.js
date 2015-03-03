@@ -172,11 +172,17 @@ angular.module('megamenu', [])
     .directive('megamenu', [function(){
         return {
             restrict: 'EAC',
+            scope: {
+                link: '@',
+                brand: '@',
+                brandImage: '@'
+            },
             replace: true,
             transclude: true,
             templateUrl: 'megamenu/templates/megamenu.tpl.html',
             link: function(scope, elm, attrs){
-
+                if (angular.isUndefined(scope.link)) scope.link = '#';
+                if (angular.isUndefined(scope.brand)) scope.brand = 'Brand';
             }
         }
     }])
