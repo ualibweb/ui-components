@@ -185,7 +185,7 @@ angular.module('megamenu', [])
                 var navbar = {};
                 if (angular.isUndefined(scope.link)) scope.link = '#';
                 if (angular.isUndefined(scope.brand)) scope.brand = 'Brand';
-                navbar.style = angular.isUndefined(scope.inverse) ? 'navbar-default' : 'navbar-inverse';
+                navbar.style = angular.isUndefined(scope.inverse) ? 'navbar-inverse' : 'navbar-default';
 
                 scope.navbar = navbar;
             }
