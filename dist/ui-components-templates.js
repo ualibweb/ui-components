@@ -34,7 +34,7 @@ angular.module("megamenu/templates/megamenu-navbar.tpl.html", []).run(["$templat
 
 angular.module("megamenu/templates/megamenu.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("megamenu/templates/megamenu.tpl.html",
-    "<nav class=\"navbar navbar-inverse mega-menu yamm\" role=\"navigation\">\n" +
+    "<nav class=\"navbar mega-menu yamm\" ng-class=\"navbar.style\" role=\"navigation\">\n" +
     "    <div class=\"container-fluid\">\n" +
     "        <div class=\"navbar-header\">\n" +
     "            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\">\n" +
