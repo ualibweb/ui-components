@@ -1,5 +1,6 @@
-angular.module('app', [
+angular.module('ualib.ui', [
     'ui.bootstrap.dropdown',
     'ui.components.templates',
-    'megamenu'
+    'megamenu',
+    'page'
 ])

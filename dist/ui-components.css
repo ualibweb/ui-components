@@ -1,6 +1,9 @@
 
-.mega-menu {
+header,
+.header {
   height: 80px;
+}
+.mega-menu {
   border: none;
   margin-bottom: 0;
   padding-left: 15px;
@@ -121,3 +124,4 @@
   -moz-transition: opacity  .2s 0s, visibility 0s 0s;
   transition: opacity  .2s 0s, visibility 0s 0s;
 }
+

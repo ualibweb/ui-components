@@ -66,7 +66,7 @@ angular.module("page/templates/page.tpl.html", []).run(["$templateCache", functi
     "<div class=\"row\">\n" +
     "    <div class=\"col-md-9\" ng-transclude></div>\n" +
     "    <div class=\"col-md-3 page-section-menu\">\n" +
-    "        <div data-spy=\"affix\" data-offset-top=\"101\">\n" +
+    "        <div>\n" +
     "            <ul class=\"nav nav-pills nav-stacked\">\n" +
     "                <li ng-repeat=\"section in menu\">\n" +
     "                    <a ng-href=\"#{{section.link}}\">{{section.title}}</a>\n" +

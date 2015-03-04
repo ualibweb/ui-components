@@ -4,8 +4,7 @@ angular.module('page', [])
         return{
             restrict: 'EAC',
             transclude: true,
-            scope: {},
-            templateUrl: 'page/page.tpl.html',
+            templateUrl: 'page/templates/page.tpl.html',
             controller: function($scope){
                 var menu = $scope.menu = [];
                 this.addSection = function(section){
@@ -21,10 +20,12 @@ angular.module('page', [])
             require: '^page',
             restrict: 'AEC',
             transclude: true,
-            scope: {},
-            templateUrl: 'page/page-section.tpl.html',
+            scope: {
+                title: '@'
+            },
+            templateUrl: 'page/templates/page-section.tpl.html',
             link: function(scope, elm, attrs, Ctrl){
-                var title = elm.find('h1').text();
+                var title = angular.isDefined(scope.title) ? scope.title : elm.find('h2').text();
                 scope.section = title.replace(/[\s\-\\/"'&]+/g, '_');
                 Ctrl.addSection({title: title, link: scope.section});
             }
