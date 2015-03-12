@@ -70,17 +70,19 @@ module.exports = function(grunt){
                 prereleaseName: false,
                 regExp: false
             }
-        }
+        },
+        clean: ['dist']
     });
 
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-bump');
 
     // Default task
-    grunt.registerTask('default', ['html2js', 'less', 'concat', 'exec']);
+    grunt.registerTask('default', ['clean', 'html2js', 'less', 'concat', 'exec']);
     grunt.registerTask('build', ['default', 'uglify']);
 };
