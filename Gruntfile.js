@@ -18,7 +18,7 @@ module.exports = function(grunt){
                 dest: 'dist/vendor.js'
             },
             components: {
-                src: ['src/**/*.js'],
+                src: ['src/**/*.js', '!src/stepcard/**/*.js'],
                 dest: 'dist/ui-components.js'
             }
         },
