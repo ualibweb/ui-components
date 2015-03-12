@@ -1,7 +1,6 @@
 angular.module('ualib.ui', [
     'ui.bootstrap.dropdown',
     'ui.components.templates',
-    'megamenu',
     'page'
 ])
 //Straight up stolen from angular-bootstrap project - https://github.com/angular-ui/bootstrap/blob/master/src/dropdown/dropdown.js
