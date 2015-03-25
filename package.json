@@ -1,6 +1,6 @@
 {
   "name": "directives",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Directives for the various components of the University of Alabama Libraries' website",
   "repository": {
     "type": "git",

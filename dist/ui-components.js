@@ -1,8 +1,7 @@
 angular.module('ualib.ui', [
     'ui.bootstrap.dropdown',
     'ui.bootstrap.tabs',
-    'ui.components.templates',
-    'page'
+    'ui.components.templates'
 ])
 //Straight up stolen from angular-bootstrap project - https://github.com/angular-ui/bootstrap/blob/master/src/dropdown/dropdown.js
 angular.module('ui.bootstrap.dropdown', [])
