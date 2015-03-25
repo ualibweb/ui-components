@@ -1,4 +1,4 @@
-angular.module('ui.components.templates', ['page/templates/page-section.tpl.html', 'page/templates/page.tpl.html', 'stepcard/templates/step-card.tpl.html', 'stepcard/templates/step.tpl.html']);
+angular.module('ui.components.templates', ['page/templates/page-section.tpl.html', 'page/templates/page.tpl.html', 'stepcard/templates/step-card.tpl.html', 'stepcard/templates/step.tpl.html', 'tabs/templates/tab.tpl.html', 'tabs/templates/tabset.tpl.html']);
 
 angular.module("page/templates/page-section.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("page/templates/page-section.tpl.html",
@@ -43,4 +43,27 @@ angular.module("stepcard/templates/step-card.tpl.html", []).run(["$templateCache
 angular.module("stepcard/templates/step.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("stepcard/templates/step.tpl.html",
     "<span ng-transclude></span>");
+}]);
+
+angular.module("tabs/templates/tab.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("tabs/templates/tab.tpl.html",
+    "<li ng-class=\"{active: active, disabled: disabled}\">\n" +
+    "    <a href ng-click=\"select()\" tab-heading-transclude>{{heading}}</a>\n" +
+    "</li>");
+}]);
+
+angular.module("tabs/templates/tabset.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("tabs/templates/tabset.tpl.html",
+    "<div ng-class=\"{'row tabset-vertical': vertical}\">\n" +
+    "    <div ng-class=\"tabClass\">\n" +
+    "        <ul class=\"nav nav-{{type || (vertical ? 'pills' : 'tabs')}}\" ng-class=\"{'nav-stacked': vertical, 'nav-justified': justified}\" ng-transclude></ul>\n" +
+    "    </div>\n" +
+    "    <div class=\"tab-content\" ng-class=\"contentClass\">\n" +
+    "        <div class=\"tab-pane\"\n" +
+    "             ng-repeat=\"tab in tabs\"\n" +
+    "             ng-class=\"{active: tab.active}\"\n" +
+    "             tab-content-transclude=\"tab\">\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>");
 }]);
