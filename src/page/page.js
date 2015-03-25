@@ -2,7 +2,7 @@ angular.module('page', [])
 
     .directive('page', [function(){
         return{
-            restrict: 'EAC',
+            restrict: 'E',
             transclude: true,
             templateUrl: 'page/templates/page.tpl.html',
             controller: function($scope){
@@ -18,7 +18,7 @@ angular.module('page', [])
     .directive('pageSection', [function(){
         return {
             require: '^page',
-            restrict: 'AEC',
+            restrict: 'E',
             transclude: true,
             scope: {
                 title: '@'
