@@ -1,7 +1,8 @@
 angular.module('ualib.ui', [
     'ui.bootstrap.dropdown',
     'ui.bootstrap.tabs',
-    'ui.components.templates'
+    'ui.components.templates',
+    'page'
 ])
 //Straight up stolen from angular-bootstrap project - https://github.com/angular-ui/bootstrap/blob/master/src/dropdown/dropdown.js
 angular.module('ui.bootstrap.dropdown', [])
@@ -171,7 +172,7 @@ angular.module('page', [])
 
     .directive('page', [function(){
         return{
-            restrict: 'EAC',
+            restrict: 'E',
             transclude: true,
             templateUrl: 'page/templates/page.tpl.html',
             controller: function($scope){
@@ -187,7 +188,7 @@ angular.module('page', [])
     .directive('pageSection', [function(){
         return {
             require: '^page',
-            restrict: 'AEC',
+            restrict: 'E',
             transclude: true,
             scope: {
                 title: '@'
