@@ -1,40 +1,16 @@
-angular.module('stepCard', [])
+angular.module('ualib.ui')
     .directive('stepCard', function(){
         return {
-            restrict: 'E',
-            transclude: true,
-            scope: {},
-            templateUrl: 'stepcard/templates/stepCard.tpl.html',
-            controller: function($scope){
-                $scope.cardData = {};
-                $scope.cardData.title = "";
-                $scope.cardData.items = [];
-                this.counter = -1;
-                this.addCard = function(card) {
-                    if ($scope.cardData.title.length == 0)
-                        $scope.cardData.title = card;
-                    else {
-                        if (typeof $scope.cardData.items[this.counter] == 'undefined')
-                            $scope.cardData.items[this.counter] = [];
-                        $scope.cardData.items[this.counter].push(card);
-                        switch ($scope.cardData.items.length){
-                            case 1:
-                                $scope.cardData.class = 'col-sm-12';
-                                break;
-                            case 2:
-                                $scope.cardData.class = 'col-sm-6';
-                                break;
-                            default:
-                                $scope.cardData.class = 'col-sm-4';
-                                break;
-                        }
-                    }
-                    console.dir($scope.cardData);
-                };
-                this.incCounter = function(){
-                    this.counter++;
-                };
-            }
+          restrict: 'EA',
+          transclude: true,
+          replace: true,
+          scope: {
+            heading: '@'
+          },
+          templateUrl: 'stepcard/templates/stepCard.tpl.html',
+          controller: function($scope){
+
+          }
         };
     })
 

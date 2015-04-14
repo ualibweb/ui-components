@@ -2,24 +2,19 @@ module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         concat: {
-            vendor_css: {
-                src: [
-                    'bower_components/Yamm3/yamm/yamm.css'
-                ],
-                dest: 'dist/vendor.css'
-            },
             vendor_js: {
                 src: [
-                    'bower_components/angular/angular.min.js',
-                    'bower_components/angular-animate/angular-animate.min.js',
-                    'bower_components/angular-strap/dist/angular-strap.min.js',
-                    'bower_components/angular-strap/dist/angular-strap.tpl.min.js'
+                    'bower_components/angular-scroll/angular-scroll.js',
                 ],
                 dest: 'dist/vendor.js'
             },
             components: {
-                src: ['src/**/*.js', '!src/stepcard/**/*.js'],
-                dest: 'dist/ui-components.js'
+                src: [
+                    'bower_components/angular-bootstrap/dist/ui-bootstrap-custom-tpls-0.12.1.js', //not "vendor" since custom build
+                    'src/**/*.js',
+                    '!src/stepcard/**/*.js'
+                ],
+                dest: 'dist/ualib-ui.js'
             }
         },
         html2js: {
@@ -29,28 +24,37 @@ module.exports = function(grunt){
                     process: true
                 },
                 src: 'src/**/*.tpl.html',
-                dest: 'dist/ui-components-templates.js',
-                module: 'ui.components.templates'
+                dest: 'dist/ualib-ui-templates.js',
+                module: 'ualib.ui.templates'
             }
         },
         uglify:{
             dist: {
                 files: [{
-                    src: ['dist/ui-component*.js'],
-                    dest: 'dist/ui-components.min.js'
+                    src: ['dist/ualib-ui*.js'],
+                    dest: 'dist/ualib-ui.min.js'
                 }]
             }
         },
         less: {
             components:{
                 files: {
-                    "dist/ui-components.css": "src/**/*.less"
+                    "dist/ualib-ui.css": "src/**/*.less"
                 }
             }
         },
         exec: {
             kss: {
                 command: 'kss-node src styleguide --template kss-template --helpers kss-template/helpers --custom codetemplate --custom hidemarkup'
+            }
+        },
+        grunt: {
+            angular_bootstrap: {
+                gruntfile: 'bower_components/angular-bootstrap/Gruntfile.js',
+                tasks: [
+                    'html2js',
+                    'build:accordion:alert:bindHtml:buttons:carousel:collapse:dateparser:datepicker:modal:pagination:popover:position:progressbar:rating:timepicker:tooltip:transition:typeahead'
+                ]
             }
         },
         bump: {
@@ -74,15 +78,11 @@ module.exports = function(grunt){
         clean: ['dist']
     });
 
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-html2js');
-    grunt.loadNpmTasks('grunt-exec');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-bump');
+    require('load-grunt-tasks')(grunt);
 
     // Default task
-    grunt.registerTask('default', ['clean', 'html2js', 'less', 'concat', 'exec']);
+    grunt.registerTask('default', ['clean', 'grunt:angular_bootstrap', 'html2js', 'less', 'concat', 'exec']);
     grunt.registerTask('build', ['default', 'uglify']);
+
+
 };

@@ -1,5 +1,4 @@
 angular.module('ualib.ui', [
-    'ui.bootstrap.tabs',
-    'ui.components.templates',
-    'page'
+    'ui.bootstrap',
+    'ualib.ui.templates'
 ])

@@ -1,5 +1,5 @@
 //Straight up stolen from angular-bootstrap project - https://github.com/angular-ui/bootstrap/blob/master/src/dropdown/dropdown.js
-angular.module('ui.bootstrap.dropdown', [])
+angular.module('ualib.ui')
 
     .constant('dropdownConfig', {
         openClass: 'open'

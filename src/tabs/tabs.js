@@ -11,7 +11,7 @@
  * AngularJS version of the tabs directive.
  */
 
-angular.module('ui.bootstrap.tabs', [])
+angular.module('ualib.ui')
 
     .controller('TabsetController', ['$scope', function TabsetCtrl($scope) {
         var ctrl = this,
