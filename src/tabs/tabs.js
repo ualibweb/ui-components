@@ -283,6 +283,4 @@ angular.module('ualib.ui')
                 node.tagName.toLowerCase() === 'data-tab-heading'
                 );
         }
-    })
-
-;
+    });

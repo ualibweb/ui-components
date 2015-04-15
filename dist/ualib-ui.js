@@ -2,7 +2,7 @@
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
 
- * Version: 0.12.1 - 2015-04-14
+ * Version: 0.12.1 - 2015-04-15
  * License: MIT
  */
 angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.transition","ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.bindHtml","ui.bootstrap.buttons","ui.bootstrap.carousel","ui.bootstrap.dateparser","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.modal","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.progressbar","ui.bootstrap.rating","ui.bootstrap.timepicker","ui.bootstrap.typeahead"]);
@@ -3756,7 +3756,6 @@ angular.module('ualib.ui')
             restrict: 'AC',
             link: function(scope, elm){
                 elm.bind('click', function(ev){
-                    ev.preventDefault();
                     ev.stopPropagation();
                 });
 
@@ -4250,6 +4249,4 @@ angular.module('ualib.ui')
                 node.tagName.toLowerCase() === 'data-tab-heading'
                 );
         }
-    })
-
-;
+    });

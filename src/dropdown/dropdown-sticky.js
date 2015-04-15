@@ -5,7 +5,6 @@ angular.module('ualib.ui')
             restrict: 'AC',
             link: function(scope, elm){
                 elm.bind('click', function(ev){
-                    ev.preventDefault();
                     ev.stopPropagation();
                 });
 
