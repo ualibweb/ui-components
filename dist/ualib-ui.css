@@ -1,5 +1,10 @@
 
 
+.scrollfix {
+  position: fixed;
+  top: 30px;
+}
+
 .service-card,
 .service-list {
   color: #333333;

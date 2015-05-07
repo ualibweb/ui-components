@@ -2,7 +2,7 @@
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
 
- * Version: 0.12.1 - 2015-04-15
+ * Version: 0.12.1 - 2015-05-07
  * License: MIT
  */
 angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.transition","ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.bindHtml","ui.bootstrap.buttons","ui.bootstrap.carousel","ui.bootstrap.dateparser","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.modal","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.progressbar","ui.bootstrap.rating","ui.bootstrap.timepicker","ui.bootstrap.typeahead"]);
@@ -3747,8 +3747,12 @@ angular.module("template/typeahead/typeahead-popup.html", []).run(["$templateCac
 
 angular.module('ualib.ui', [
     'ui.bootstrap',
+    'duScroll',
     'ualib.ui.templates'
 ])
+
+    .value('duScrollOffset', 30);
+
 angular.module('ualib.ui')
     //TODO: Write documentation and examples
     .directive('dropdownSticky', [function(){
@@ -3931,9 +3935,9 @@ angular.module('ualib.ui')
     });
 angular.module('ualib.ui')
 
-  .directive('page', [function(){
+  .directive('pageSections', [function(){
     return{
-      restrict: 'EA',
+      restrict: 'C',
       transclude: true,
       templateUrl: 'page/templates/page.tpl.html',
       controller: function($scope){
@@ -3946,10 +3950,10 @@ angular.module('ualib.ui')
     }
   }])
 
-  .directive('pageSection', [function(){
+  .directive('section', [function(){
     return {
-      require: '^page',
-      restrict: 'EA',
+      require: '^pageSections',
+      restrict: 'EC',
       transclude: true,
       scope: {
         title: '@',
@@ -3957,13 +3961,110 @@ angular.module('ualib.ui')
       },
       templateUrl: 'page/templates/page-section.tpl.html',
       link: function(scope, elm, attrs, Ctrl){
-        var title = angular.isDefined(scope.title) ? scope.title : elm.find('h2').text();
-        var icon = scope.icon || false;
-        scope.section = title.replace(/[\s\-\\/"'&]+/g, '_');
-        Ctrl.addSection({title: title, icon: icon, link: scope.section});
+        var titleElm = elm.find('h2')[0];
+        if (titleElm){
+            var title = angular.isDefined(scope.title) ? scope.title : titleElm.textContent;
+            var icon = scope.icon || false;
+            scope.section = title.replace(/[\s\-\\/"'&]+/g, '_');
+            Ctrl.addSection({title: title, icon: icon, link: scope.section});
+        }
       }
     }
   }]);
+/**
+ * Modified from ui-utils module - https://github.com/angular-ui/ui-utils
+ *
+ * This scroll fix preserves the fixed element's with
+ */
+/**
+ * Adds a 'ui-scrollfix' class to the element when the page scrolls past it's position.
+ * @param [offset] {int} optional Y-offset to override the detected offset.
+ *   Takes 300 (absolute) or -300 or +300 (relative to detected)
+ */
+angular.module('ualib.ui').directive('uiScrollfix', [
+    '$window',
+    function ($window) {
+        'use strict';
+        function getWindowScrollTop() {
+            if (angular.isDefined($window.pageYOffset)) {
+                return $window.pageYOffset;
+            } else {
+                var iebody = document.compatMode && document.compatMode !== 'BackCompat' ? document.documentElement : document.body;
+                return iebody.scrollTop;
+            }
+        }
+
+        // Allows calculation of child elem offsets
+        // borrowed from https://jsperf.com/offset-vs-getboundingclientrect/8
+        function loopedOffset(elem) {
+            var offsetLeft = elem.offsetLeft,
+                offsetTop = elem.offsetTop;
+            while (elem = elem.offsetParent) {
+                offsetLeft += elem.offsetLeft;
+                offsetTop += elem.offsetTop;
+            }
+            return {
+                left: offsetLeft,
+                top: offsetTop
+            };
+        };
+        return {
+            restrict: 'AC',
+            require: '^?uiScrollfixTarget',
+            link: function (scope, elm, attrs, uiScrollfixTarget) {
+                var absolute = true, 
+                    shift = -30,
+                    fixLimit,
+                    $target = uiScrollfixTarget && uiScrollfixTarget.$element || angular.element($window);
+                
+                if (!attrs.uiScrollfix) {
+                    absolute = false;
+                } else if (typeof attrs.uiScrollfix === 'string') {
+                    // charAt is generally faster than indexOf: http://jsperf.com/indexof-vs-charat
+                    if (attrs.uiScrollfix.charAt(0) === '-') {
+                        absolute = false;
+                        shift = -parseFloat(attrs.uiScrollfix.substr(1));
+                    } else if (attrs.uiScrollfix.charAt(0) === '+') {
+                        absolute = false;
+                        shift = parseFloat(attrs.uiScrollfix.substr(1));
+                    }
+                }
+                fixLimit = absolute ? attrs.uiScrollfix : loopedOffset(elm[0]).top + shift;
+
+                function onScroll() {
+                    var limit = absolute ? attrs.uiScrollfix : loopedOffset(elm[0]).top + shift;
+                    // if pageYOffset is defined use it, otherwise use other crap for IE
+                    var offset = uiScrollfixTarget ? $target[0].scrollTop : getWindowScrollTop();
+
+                    if (!elm.hasClass('scrollfix') && offset > limit) {
+                        var width = elm[0].offsetWidth;
+                        elm.css('width', width + 'px');
+                        elm.addClass('scrollfix');
+                        fixLimit = limit;
+                    } else if (elm.hasClass('scrollfix') && offset < fixLimit) {
+                        elm.removeClass('scrollfix');
+                        elm.css('width', 'auto');
+                    }
+                }
+                $target.on('scroll', onScroll);
+                // Unbind scroll event handler when directive is removed
+                scope.$on('$destroy', function () {
+                    $target.off('scroll', onScroll);
+                });
+            }
+        };
+    }
+]).directive('uiScrollfixTarget', [function () {
+    'use strict';
+    return {
+        controller: [
+            '$element',
+            function ($element) {
+                this.$element = $element;
+            }
+        ]
+    };
+}]);
 /**
  * Adopted from UI Bootstrap
  * https://angular-ui.github.io/bootstrap/

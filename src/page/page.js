@@ -1,8 +1,8 @@
 angular.module('ualib.ui')
 
-  .directive('page', [function(){
+  .directive('pageSections', [function(){
     return{
-      restrict: 'EA',
+      restrict: 'C',
       transclude: true,
       templateUrl: 'page/templates/page.tpl.html',
       controller: function($scope){
@@ -15,10 +15,10 @@ angular.module('ualib.ui')
     }
   }])
 
-  .directive('pageSection', [function(){
+  .directive('section', [function(){
     return {
-      require: '^page',
-      restrict: 'EA',
+      require: '^pageSections',
+      restrict: 'EC',
       transclude: true,
       scope: {
         title: '@',
@@ -26,10 +26,13 @@ angular.module('ualib.ui')
       },
       templateUrl: 'page/templates/page-section.tpl.html',
       link: function(scope, elm, attrs, Ctrl){
-        var title = angular.isDefined(scope.title) ? scope.title : elm.find('h2').text();
-        var icon = scope.icon || false;
-        scope.section = title.replace(/[\s\-\\/"'&]+/g, '_');
-        Ctrl.addSection({title: title, icon: icon, link: scope.section});
+        var titleElm = elm.find('h2')[0];
+        if (titleElm){
+            var title = angular.isDefined(scope.title) ? scope.title : titleElm.textContent;
+            var icon = scope.icon || false;
+            scope.section = title.replace(/[\s\-\\/"'&]+/g, '_');
+            Ctrl.addSection({title: title, icon: icon, link: scope.section});
+        }
       }
     }
   }]);

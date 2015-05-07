@@ -8,13 +8,13 @@ angular.module("page/templates/page-section.tpl.html", []).run(["$templateCache"
 
 angular.module("page/templates/page.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("page/templates/page.tpl.html",
-    "<div class=\"row\">\n" +
+    "<div class=\"row\" ng-cloak>\n" +
     "  <div class=\"col-md-9\" ng-transclude></div>\n" +
     "  <div class=\"col-md-3 page-section-menu\">\n" +
-    "    <div>\n" +
+    "    <div ui-scrollfix=\"-30\">\n" +
     "      <ul class=\"nav nav-pills nav-stacked\">\n" +
-    "        <li ng-repeat=\"section in menu\">\n" +
-    "          <a ng-href=\"#{{section.link}}\">\n" +
+    "        <li ng-repeat=\"section in menu\" du-scrollspy=\"{{section.link}}\">\n" +
+    "          <a ng-href=\"#{{section.link}}\" du-smooth-scroll>\n" +
     "            <span class=\"fa fa-fw\" ng-class=\"section.icon\" ng-if=\"section.icon\"></span>\n" +
     "            {{section.title}}\n" +
     "          </a>\n" +

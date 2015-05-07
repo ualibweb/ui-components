@@ -2,12 +2,6 @@ module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         concat: {
-            vendor_js: {
-                src: [
-                    'bower_components/angular-scroll/angular-scroll.js',
-                ],
-                dest: 'dist/vendor.js'
-            },
             components: {
                 src: [
                     'bower_components/angular-bootstrap/dist/ui-bootstrap-custom-tpls-0.12.1.js', //not "vendor" since custom build
@@ -31,7 +25,7 @@ module.exports = function(grunt){
         uglify:{
             dist: {
                 files: [{
-                    src: ['dist/ualib-ui*.js'],
+                    src: ['dist/*.js', '!dist/*.min.js'],
                     dest: 'dist/ualib-ui.min.js'
                 }]
             }
@@ -41,6 +35,16 @@ module.exports = function(grunt){
                 files: {
                     "dist/ualib-ui.css": "src/**/*.less"
                 }
+            }
+        },
+        bower_concat: {
+            all: {
+                dest: 'dist/vendor.js',
+                cssDest: 'dist/vendor.css',
+                exclude: [
+                    'angular',
+                    'angular-bootstrap'
+                ]
             }
         },
         exec: {
@@ -81,8 +85,7 @@ module.exports = function(grunt){
     require('load-grunt-tasks')(grunt);
 
     // Default task
-    grunt.registerTask('default', ['clean', 'grunt:angular_bootstrap', 'html2js', 'less', 'concat', 'exec']);
+    grunt.registerTask('default', ['clean', 'bower_concat', 'grunt:angular_bootstrap', 'html2js', 'less', 'concat', 'exec']);
     grunt.registerTask('build', ['default', 'uglify']);
-
 
 };

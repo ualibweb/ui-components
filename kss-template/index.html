@@ -5,253 +5,181 @@
 <!--[if IE 8]>                <html class="no-js lt-ie9" lang="en" ng-app="ualib.ui"> <![endif]-->
 <!--[if (gte IE 9)|(gt IEMobile 7)]><!--> <html class="no-js" lang="en" ng-app="ualib.ui"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <title>UA Libraries Styleguide</title>
+    <meta charset="utf-8">
+    <title>UA Libraries Styleguide</title>
 
-  <meta name="description" content="">
-  <meta name="generator" content="kss-node">
-  <meta name="viewport" content="width=device-width">
+    <meta name="description" content="">
+    <meta name="generator" content="kss-node">
+    <meta name="viewport" content="width=device-width">
 
-  <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500|Oxygen:400,700,300|Open+Sans|EB+Garamond|Lato:300,400' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://rawgit.com/ualibweb/roots-ualib/master/assets/css/main.min.css">
-  <link rel="stylesheet" href="https://rawgit.com/ualibweb/ualibweb.github.io/master/styleguide/public/ualib-styleguide.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link href="../dist/ualib-ui.css" rel="stylesheet">
-  {{{styles}}}
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
+    <link rel="stylesheet" id="roots_cdn-css" href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700|Oxygen:300,400,700|Open+Sans:300,400,600,700|EB+Garamond|Lato:300,400,700" type="text/css" media="all">
+    <link rel="stylesheet" href="https://rawgit.com/ualibweb/roots-ualib/master/assets/css/main.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="../dist/ualib-ui.css" rel="stylesheet">
+    {{{styles}}}
 </head>
 <body>
 <header id="header-nav">
-  <nav class="navbar navbar-static-top  navbar-ualib yamm" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="../index.html" >UA Lib Web Docs</a>
-      </div>
+    <nav class="navbar navbar-static-top navbar-mega" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html" >UA Lib Web Docs</a>
+            </div>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="dropdown yamm-fw">
-            <a href="#" class="dropdown-toggle">Styleguide</a>
-            <ul class="dropdown-menu">
-              <li>
-                <div class="yamm-content ualib-mm">
-                  <div class="row">
-                    <ul class="list-unstyled">
-                      {{#eachRoot}}
-                      <li class="col-xs-3 menu-col menu-practice-presentation-rooms"{{#isRoot @root.rootNumber}}  class="active" {{/isRoot}}>
-                        <a href="section-{{reference}}.html">
-                          {{#if icon}}
-                            <span class="fa {{icon}}"></span>
-                          {{/if}}
-                          <h4>{{header}}</h4>
-                          {{#if titleslug}}
-                            <p>{{titleslig}}</p>
-                          {{/if}}
-                        </a>
-                      </li>
-                      {{/eachRoot}}
-                    </ul>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    {{#eachRoot}}
+                    <li class="dropdown yamm-fw">
+                        <a href="#" class="dropdown-toggle">{{header}}</a>
 
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="https://github.com/ualibweb/ualibweb.github.io" target="_new"><span class="fa fa-github"></span> Github</a>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle">Quick Links</a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="http://getbootstrap.com/"><span class="fa fa-fw fa-border">B</span> Bootstrap Docs</a></li>
-              <li><a href="http://fortawesome.github.io/Font-Awesome/"><span class="fa fa-fw fa-flag"></span> Font Awesome</a></li>
-              <li><a href="https://www.google.com/fonts"><span class="fa fa-fw fa-paint-brush"></span> Google Fonts</a></li>
-              <li><a href="http://webaim.org/resources/contrastchecker/"><span class="fa fa-fw fa-adjust"></span> WCAG AA Contrast Checker</a></li>
-              <li><a href="https://color.adobe.com"><span class="fa fa-fw fa-eyedropper"></span> Adobe Color CC</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="yamm-content">
+                                    <div class="row">
+                                        {{#eachSection reference}}
+                                        {{#ifDepth 2}}
+                                        <div class="col-xs-3 menu-col">
+                                            <a class="service-card" href="section-{{../../referenceURI}}.html#{{scrollSpyId referenceURI}}">
+                                                {{#if icon}}
+                                                <span class="fa {{icon}}"></span>
+                                                {{/if}}
+                                                <h4>{{header}}</h4>
+                                                {{#if menublurb}}
+                                                <p>{{menublurb}}</p>
+                                                {{/if}}
+                                            </a>
+                                        </div>
+                                        {{/ifDepth}}
+                                        {{/eachSection}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </li>
+                    {{/eachRoot}}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="https://github.com/ualibweb/ualibweb.github.io" target="_new"><span class="fa fa-github"></span> Github</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quick Links</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="http://getbootstrap.com/"><span class="fa fa-fw fa-border">B</span> Bootstrap Docs</a></li>
+                            <li><a href="http://fortawesome.github.io/Font-Awesome/"><span class="fa fa-fw fa-flag"></span> Font Awesome</a></li>
+                            <li><a href="https://www.google.com/fonts"><span class="fa fa-fw fa-paint-brush"></span> Google Fonts</a></li>
+                            <li><a href="http://webaim.org/resources/contrastchecker/"><span class="fa fa-fw fa-adjust"></span> WCAG AA Contrast Checker</a></li>
+                            <li><a href="https://color.adobe.com"><span class="fa fa-fw fa-eyedropper"></span> Adobe Color CC</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>
 
-<div class="wrap">
-  <div class="content">
-    <main class="main" role="main">
-        <div class="jumbotron jumbotron-head">
-          <div class="container">
-            {{#if homepage}}
-              <h1>Styleguide</h1>
-              <p class="lead">CSS, Components, and Layout details</p>
-            {{else}}
-              {{#section rootName}}
-                <h1>{{header}}</h1>
-
-                {{#if description}}
-                  {{{description}}}
-                {{/if}}
-              {{/section}}
-            {{/if}}
-          </div>
-        </div>
-        <div class="container">
-          {{#if homepage}}
-            <div class="col-xs-12">{{{homepage}}}</div>
-          {{else}}
-            <div class="col-sm-2 col-sm-push-10">
-              <nav class="fixie-menu navbar-styleguide">
-                <ul class="nav nav-submenu">
-                  {{#eachSection rootName}}
-                    {{#ifDepth 2}}
-                      <li data-target="#{{scrollSpyId reference}}" bs-scrollspy>
-                        <a class="menu-item" href="#{{scrollSpyId reference}}">
-                          {{header}}
-                        </a>
-                        <ul class="nav ">
-                          {{#eachSection reference}}
-                            {{#ifDepth 3}}
-                              <li data-target="#{{scrollSpyId reference}}" bs-scrollspy>
-                                <a class="submenu-item" href="#{{scrollSpyId reference}}">
-                                  {{header}}
-                                </a>
-                              </li>
-                            {{/ifDepth}}
-                          {{/eachSection}}
-                        </ul>
-                      </li>
-                    {{/ifDepth}}
-                  {{/eachSection}}
-                </ul>
-              </nav>
-            </div>
-            <div class="col-sm-10 col-sm-pull-2">
-              {{#eachSection rootName}}
-                {{#unlessDepth 1}}
-                  <div class="section" id="{{scrollSpyId reference}}">
-                    <h{{depth}}>{{header}}</h{{depth}}>
+<div class="wrap" role="document">
+    <div class="content row">
+        <main class="main" role="main">
+            <div class="jumbotron jumbotron-head">
+                <div class="container">
+                    {{#if homepage}}
+                    <h1>University Libraries Web Docs</h1>
+                    <p class="lead">Writing for the web, Styleguide, Website Components, and Resources.</p>
+                    {{else}}
+                    {{#section rootName}}
+                    <h1>{{header}}</h1>
 
                     {{#if description}}
-                      {{{description}}}
+                    {{{description}}}
                     {{/if}}
-
-                    {{#if codetemplate}}
-                      <div class="panel panel-default">
-                        <div class="panel-body">
-                          {{#if markup}}
-                            {{{markup}}}
-                          {{/if}}
-                        </div>
-                        <div class="panel-footer">
-                          <pre>
-                            <code class="html">{{codetemplate}}</code>
-                          </pre>
-                        </div>
-                      </div>
-                    {{else}}
-                      {{#if markup}}
-                        <div class="panel panel-default">
-                          <div class="panel-body">
-
-                              {{#if modifiers}}
-                                <div class="muted">Default:</div>
-                              {{/if}}
-                              {{{markup}}}
-
-                            {{#eachModifier}}
-                              <p>
-                                <div>{{name}}</div>
-                                <div>{{{description}}}</div>
-                                <div>{{{markup}}}</div>
-                              </p>
-                            {{/eachModifier}}
-                          </div>
-                          {{#unless hidemarkup}}
-                          <div class="panel-footer">
-                            <pre>
-                              <code class="html">{{markup}}</code>
-                            </pre>
-                          </div>
-                          {{/unless}}
-                        </div>
-                      {{/if}}
+                    {{/section}}
                     {{/if}}
-                  </div>
-                {{/unlessDepth}}
-              {{/eachSection}}
+                </div>
             </div>
-          {{/if}}
-        </div>
-    </main>
-  </div>
+            <div class="container">
+                {{#if homepage}}
+                <div class="col-xs-12">{{{homepage}}}</div>
+                {{else}}
+                <div class="page-sections">
+                    {{#eachSection rootName}}
+                    {{#unlessDepth 1}}
+                        <section>
+                            <h{{depth}}>{{header}}</h{{depth}}>
+
+                            {{#if description}}
+                            {{{description}}}
+                            {{/if}}
+
+                            {{#if codetemplate}}
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    {{#if markup}}
+                                    {{{markup}}}
+                                    {{/if}}
+                                </div>
+                                <div class="panel-footer">
+                                    <pre>
+                                        <code class="html">{{codetemplate}}</code>
+                                    </pre>
+                                </div>
+                            </div>
+                            {{else}}
+                            {{#if markup}}
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                    {{#if modifiers}}
+                                    <div class="muted">Default:</div>
+                                    {{/if}}
+                                    {{{markup}}}
+
+                                    {{#eachModifier}}
+                                    <p>
+                                    <div>{{name}}</div>
+                                    <div>{{{description}}}</div>
+                                    <div>{{{markup}}}</div>
+                                    </p>
+                                    {{/eachModifier}}
+                                </div>
+                                {{#unless hidemarkup}}
+                                <div class="panel-footer">
+                                    <pre>
+                                        <code class="html">{{markup}}</code>
+                                    </pre>
+                                </div>
+                                {{/unless}}
+                            </div>
+                            {{/if}}
+                            {{/if}}
+                        </section>
+                    {{/unlessDepth}}
+                    {{/eachSection}}
+                </div>
+                {{/if}}
+            </div>
+        </main>
+    </div>
 </div>
 
 <footer>
 
 </footer>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.28/angular.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/holder/2.4.0/holder.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
+<script src="../dist/vendor.js"></script>
 <script src="../dist/ualib-ui-templates.js"></script>
 <script src="../dist/ualib-ui.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<script>
-  angular.module('app', ['ualib.ui']);
-  angular.module('styleguide', ['ngAnimate', 'mgcrea.ngStrap'])
-
-          /*.run(['$rootScope', function($rootScope){
-            $rootScope.$on('duScrollspy:becameActive', function(event, elm){
-              /*console.log({
-                ev: event,
-                element: elm
-              })*
-            })
-          }])*/
-
-          .directive('fixieMenu', ['$window', function($window){
-            return {
-              restrict: 'AC',
-              link: function(scope, elm, attrs){
-                var width = elm[0].offsetWidth;
-                var fixed = false;
-                var fixieClass = 'nav-fixed';
-                var offset = 350;
-                angular.element($window).bind('scroll', fixieScroll);
-                function fixieScroll(ev){
-                  if (this.pageYOffset > offset) {
-                    if (!fixed){
-                      console.log(width);
-                      elm.addClass(fixieClass);
-                      elm.css('width', width+'px');
-                      fixed = true;
-                    }
-                  }
-                  else {
-                    if (fixed){
-                      elm.removeClass(fixieClass);
-                      elm.css('width', 'auto');
-                      fixed = false;
-                    }
-                  }
-                  scope.$apply();
-                }
-                scope.$on('$destroy', function(){
-                  angular.element($window).unbind('scroll', fixieScroll);
-                });
-              }
-            }
-          }]);
-</script>
 </body>
 </html>
