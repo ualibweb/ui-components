@@ -109,10 +109,10 @@
                 {{#if homepage}}
                 <div class="col-xs-12">{{{homepage}}}</div>
                 {{else}}
-                <div class="page-sections">
+                <div class="page-with-menu">
                     {{#eachSection rootName}}
                     {{#unlessDepth 1}}
-                        <section>
+                        <div class="page-section">
                             <h{{depth}}>{{header}}</h{{depth}}>
 
                             {{#if description}}
@@ -160,7 +160,7 @@
                             </div>
                             {{/if}}
                             {{/if}}
-                        </section>
+                        </div>
                     {{/unlessDepth}}
                     {{/eachSection}}
                 </div>

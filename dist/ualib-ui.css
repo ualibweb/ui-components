@@ -1,4 +1,14 @@
 
+.page-with-menu {
+  opacity: 0;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.page-with-menu.loaded {
+  opacity: 1;
+}
 
 .scrollfix {
   position: fixed;

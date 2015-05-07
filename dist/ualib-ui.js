@@ -3935,26 +3935,30 @@ angular.module('ualib.ui')
     });
 angular.module('ualib.ui')
 
-  .directive('pageSections', [function(){
+  .directive('pageWithMenu', [function(){
     return{
       restrict: 'C',
       transclude: true,
+        replace: true,
       templateUrl: 'page/templates/page.tpl.html',
-      controller: function($scope){
+      controller: function($scope, $element){
         var menu = $scope.menu = [];
         this.addSection = function(section){
           menu.push(section);
           console.log(section);
         }
+
+          $element.addClass('loaded');
       }
     }
   }])
 
-  .directive('section', [function(){
+  .directive('pageSection', [function(){
     return {
-      require: '^pageSections',
+      require: '^pageWithMenu',
       restrict: 'EC',
       transclude: true,
+        replace: true,
       scope: {
         title: '@',
         icon: '@'
