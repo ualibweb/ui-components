@@ -2,7 +2,7 @@ angular.module('ualib.ui.templates', ['page/templates/page-section.tpl.html', 'p
 
 angular.module("page/templates/page-section.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("page/templates/page-section.tpl.html",
-    "<div id=\"{{section}}\" ng-transclude>\n" +
+    "<div class=\"page-slice\" id=\"{{section}}\" ng-transclude>\n" +
     "</div>");
 }]);
 
