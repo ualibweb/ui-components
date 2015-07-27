@@ -34,16 +34,21 @@ angular.module('ualib.ui').directive('uiScrollfix', [
                 left: offsetLeft,
                 top: offsetTop
             };
-        };
+        }
         return {
             restrict: 'AC',
             require: '^?uiScrollfixTarget',
             link: function (scope, elm, attrs, uiScrollfixTarget) {
-                var absolute = true, 
+                var absolute = true,
                     shift = -30,
+                    elmWidth = elm[0].offsetWidth,
                     fixLimit,
+                    bottomLimit,
                     $target = uiScrollfixTarget && uiScrollfixTarget.$element || angular.element($window);
-                
+                var parent = angular.isDefined(attrs.boundByParent) ? elm.parent() : null;
+                console.log(angular.isDefined(attrs.boundByParent));
+                console.log(attrs);
+
                 if (!attrs.uiScrollfix) {
                     absolute = false;
                 } else if (typeof attrs.uiScrollfix === 'string') {
@@ -63,6 +68,15 @@ angular.module('ualib.ui').directive('uiScrollfix', [
                     // if pageYOffset is defined use it, otherwise use other crap for IE
                     var offset = uiScrollfixTarget ? $target[0].scrollTop : getWindowScrollTop();
 
+                    if (parent !== null){
+                        if (parent[0].offsetHeight + loopedOffset(parent[0]).top <= offset + elm[0].offsetHeight){
+                            elm.addClass('scrollfix-bottom-limit');
+                        }
+                        else if (elm.hasClass('scrollfix-bottom-limit')){
+                            elm.removeClass('scrollfix-bottom-limit');
+                        }
+                    }
+
                     if (!elm.hasClass('scrollfix') && offset > limit) {
                         var width = elm[0].offsetWidth;
                         elm.css('width', width + 'px');
@@ -73,6 +87,7 @@ angular.module('ualib.ui').directive('uiScrollfix', [
                         elm.css('width', 'auto');
                     }
                 }
+
                 $target.on('scroll', onScroll);
                 // Unbind scroll event handler when directive is removed
                 scope.$on('$destroy', function () {

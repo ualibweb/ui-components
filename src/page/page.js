@@ -4,16 +4,15 @@ angular.module('ualib.ui')
     return{
       restrict: 'C',
       transclude: true,
-        replace: true,
+      replace: true,
       templateUrl: 'page/templates/page.tpl.html',
       controller: function($scope, $element){
         var menu = $scope.menu = [];
         this.addSection = function(section){
           menu.push(section);
-          console.log(section);
-        }
+        };
 
-          $element.addClass('loaded');
+        $element.addClass('loaded');
       }
     }
   }])

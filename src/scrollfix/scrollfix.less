@@ -4,12 +4,15 @@
 // This is great for sub-navigation or column headers for large tables of data.
 //
 // Elements with `.ui-scrollfix` class will become fixed when they are `30px` from the top of the page.
+// Adding the `bound-by-parent` attribute to a `ui-scrollfix` element, will ensure is stays inside it's parent element's boundaries.
 //
 // The [Pages &amp; Submenus](section-layout.html#layout-pages_submenus) described in the Layout section have
-// scroll fixed menus applied to the by default.
+// scroll fixed menus applied to the by default. The `Page with menu` component also uses the `bound-by-parent` option to ensure the menu
+// doesn't overlap header to footer element.
 //
 // CodeTemplate:
 //    <div class="ui-scrollfix">I'm not going to be sticky in the docs! They'd just be annoying.</div>
+//    <div class="ui-scrollfix" bound-by-parent>I'm sticky too! But I'll stay inside my parent element's boundaries</div>
 //
 // Icon: fa-paperclip
 //
@@ -21,6 +24,12 @@
 .scrollfix {
   position: fixed;
   top: 30px;
+}
+
+.scrollfix-bottom-limit{
+  position: absolute;
+  bottom: 0;
+  top: auto;
 }
 
 // Scrollspy

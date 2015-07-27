@@ -3,5 +3,5 @@ angular.module('ualib.ui', [
     'duScroll',
     'ualib.ui.templates'
 ])
-
+    .value('duScrollBottomSpy', true)
     .value('duScrollOffset', 30);
