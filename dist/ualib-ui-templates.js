@@ -1,4 +1,4 @@
-angular.module('ualib.ui.templates', ['page/templates/page-section.tpl.html', 'page/templates/page.tpl.html', 'stepcard/templates/step-card.tpl.html', 'stepcard/templates/step.tpl.html', 'tabs/templates/tab.tpl.html', 'tabs/templates/tabset.tpl.html']);
+angular.module('ualib.ui.templates', ['page/templates/page-section.tpl.html', 'page/templates/page.tpl.html', 'tabs/templates/tab.tpl.html', 'tabs/templates/tabset.tpl.html']);
 
 angular.module("page/templates/page-section.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("page/templates/page-section.tpl.html",
@@ -22,21 +22,6 @@ angular.module("page/templates/page.tpl.html", []).run(["$templateCache", functi
     "      </ul>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "</div>");
-}]);
-
-angular.module("stepcard/templates/step-card.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("stepcard/templates/step-card.tpl.html",
-    "<div class=\"row step-card\">\n" +
-    "  <h3 ng-if=\"heading\">{{heading}}</h3>\n" +
-    "  <div ng-transclude></div>\n" +
-    "</div>");
-}]);
-
-angular.module("stepcard/templates/step.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("stepcard/templates/step.tpl.html",
-    "<div class=\"step-card-step\" ng-class=\"stepcard.colSize\">\n" +
-    "  <div class=\"step-num pull-left\">{{}}</div>\n" +
     "</div>");
 }]);
 

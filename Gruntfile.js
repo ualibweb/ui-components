@@ -17,7 +17,7 @@ module.exports = function(grunt){
                     base: 'src/',
                     process: true
                 },
-                src: 'src/**/*.tpl.html',
+                src: ['src/**/*.tpl.html', '!src/stepcard/**/*.tpl.html'],
                 dest: 'dist/ualib-ui-templates.js',
                 module: 'ualib.ui.templates'
             }
@@ -33,7 +33,7 @@ module.exports = function(grunt){
         less: {
             components:{
                 files: {
-                    "dist/ualib-ui.css": "src/**/*.less"
+                    "dist/ualib-ui.css": ["src/**/*.less", "!src/**/service-cards.less"]
                 }
             }
         },
