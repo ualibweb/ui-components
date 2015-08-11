@@ -57,7 +57,7 @@ module.exports = function(grunt){
                 gruntfile: 'bower_components/angular-bootstrap/Gruntfile.js',
                 tasks: [
                     'html2js',
-                    'build:accordion:alert:bindHtml:buttons:carousel:collapse:dateparser:datepicker:modal:pagination:popover:position:progressbar:rating:timepicker:tooltip:transition:typeahead'
+                    'build:accordion:alert:bindHtml:buttons:collapse:dateparser:datepicker:pagination:popover:position:timepicker:tooltip:transition'
                 ]
             }
         },

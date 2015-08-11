@@ -9,8 +9,7 @@ angular.module("page/templates/page-section.tpl.html", []).run(["$templateCache"
 angular.module("page/templates/page.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("page/templates/page.tpl.html",
     "<div class=\"row\" ng-cloak>\n" +
-    "  <div class=\"col-md-9\" ng-transclude></div>\n" +
-    "  <div class=\"col-md-3 page-section-menu hidden-xs\">\n" +
+    "  <div class=\"col-md-3 col-md-push-9 page-section-menu hidden-sm\">\n" +
     "    <div ui-scrollfix bound-by-parent>\n" +
     "      <ul class=\"nav nav-pills nav-stacked\">\n" +
     "        <li ng-repeat=\"section in menu\" du-scrollspy=\"{{section.link}}\">\n" +
@@ -22,6 +21,7 @@ angular.module("page/templates/page.tpl.html", []).run(["$templateCache", functi
     "      </ul>\n" +
     "    </div>\n" +
     "  </div>\n" +
+    "    <div class=\"col-md-9 col-md-pull-3\" ng-transclude></div>\n" +
     "</div>");
 }]);
 
