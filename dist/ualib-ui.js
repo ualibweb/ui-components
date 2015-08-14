@@ -2,7 +2,7 @@
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
 
- * Version: 0.12.1 - 2015-08-11
+ * Version: 0.12.1 - 2015-08-14
  * License: MIT
  */
 angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.transition","ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.bindHtml","ui.bootstrap.buttons","ui.bootstrap.dateparser","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.timepicker"]);
@@ -2586,14 +2586,14 @@ angular.module('ualib.ui')
       transclude: true,
       replace: true,
       templateUrl: 'page/templates/page.tpl.html',
-      controller: function($scope, $element){
+      controller: ['$scope', '$element', function($scope, $element){
         var menu = $scope.menu = [];
         this.addSection = function(section){
           menu.push(section);
         };
 
         $element.addClass('loaded');
-      }
+      }]
     }
   }])
 
@@ -2667,8 +2667,8 @@ angular.module('ualib.ui').directive('uiScrollfix', [
                     bottomLimit,
                     $target = uiScrollfixTarget && uiScrollfixTarget.$element || angular.element($window);
                 var parent = angular.isDefined(attrs.boundByParent) ? elm.parent() : null;
-                console.log(angular.isDefined(attrs.boundByParent));
-                console.log(attrs);
+               /* console.log(angular.isDefined(attrs.boundByParent));
+                console.log(attrs);*/
 
                 if (!attrs.uiScrollfix) {
                     absolute = false;
@@ -2932,9 +2932,9 @@ angular.module('ualib.ui')
                 //once it inserts the tab's content into the dom
                 onDeselect: '&deselect'
             },
-            controller: function() {
+            controller: [function() {
                 //Empty controller so other directives can require being 'under' a tab
-            },
+            }],
             compile: function(elm, attrs, transclude) {
                 return function postLink(scope, elm, attrs, tabsetCtrl) {
                     scope.$watch('active', function(active) {

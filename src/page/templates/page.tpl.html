@@ -1,6 +1,7 @@
 <div class="row" ng-cloak>
-  <div class="col-md-3 col-md-push-9 page-section-menu hidden-sm">
-    <div ui-scrollfix bound-by-parent>
+    <div class="col-md-9" ng-transclude></div>
+  <div class="col-md-3 page-section-menu">
+    <div ui-scrollfix bound-by-parent class="hidden-sm">
       <ul class="nav nav-pills nav-stacked">
         <li ng-repeat="section in menu" du-scrollspy="{{section.link}}">
           <a ng-href="#{{section.link}}" du-smooth-scroll>
@@ -11,5 +12,4 @@
       </ul>
     </div>
   </div>
-    <div class="col-md-9 col-md-pull-3" ng-transclude></div>
 </div>

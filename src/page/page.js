@@ -6,14 +6,14 @@ angular.module('ualib.ui')
       transclude: true,
       replace: true,
       templateUrl: 'page/templates/page.tpl.html',
-      controller: function($scope, $element){
+      controller: ['$scope', '$element', function($scope, $element){
         var menu = $scope.menu = [];
         this.addSection = function(section){
           menu.push(section);
         };
 
         $element.addClass('loaded');
-      }
+      }]
     }
   }])
 

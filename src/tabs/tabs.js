@@ -202,9 +202,9 @@ angular.module('ualib.ui')
                 //once it inserts the tab's content into the dom
                 onDeselect: '&deselect'
             },
-            controller: function() {
+            controller: [function() {
                 //Empty controller so other directives can require being 'under' a tab
-            },
+            }],
             compile: function(elm, attrs, transclude) {
                 return function postLink(scope, elm, attrs, tabsetCtrl) {
                     scope.$watch('active', function(active) {

@@ -46,8 +46,8 @@ angular.module('ualib.ui').directive('uiScrollfix', [
                     bottomLimit,
                     $target = uiScrollfixTarget && uiScrollfixTarget.$element || angular.element($window);
                 var parent = angular.isDefined(attrs.boundByParent) ? elm.parent() : null;
-                console.log(angular.isDefined(attrs.boundByParent));
-                console.log(attrs);
+               /* console.log(angular.isDefined(attrs.boundByParent));
+                console.log(attrs);*/
 
                 if (!attrs.uiScrollfix) {
                     absolute = false;
