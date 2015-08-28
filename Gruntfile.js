@@ -22,18 +22,38 @@ module.exports = function(grunt){
                 module: 'ualib.ui.templates'
             }
         },
+        ngAnnotate: {
+            options: {
+                singleQuotes: true
+            },
+            app: {
+                files: [
+                    {
+                        'dist/<%= pkg.name %>.js': ['dist/<%= pkg.name %>.js']
+                    }
+                ]
+            }
+        },
         uglify:{
             dist: {
                 files: [{
-                    src: ['dist/*.js', '!dist/*.min.js'],
+                    src: ['dist/<%= pkg.name %>-templates.js', 'dist/<%= pkg.name %>.js'],
                     dest: 'dist/ualib-ui.min.js'
                 }]
             }
         },
         less: {
-            components:{
+            dev:{
                 files: {
                     "dist/ualib-ui.css": ["src/**/*.less", "!src/**/service-cards.less"]
+                }
+            },
+            build: {
+                files: {
+                    'dist/<%= pkg.name %>.min.css': ["src/**/*.less", "!src/**/service-cards.less"]
+                },
+                options: {
+                    compress: true
                 }
             }
         },
@@ -85,7 +105,7 @@ module.exports = function(grunt){
     require('load-grunt-tasks')(grunt);
 
     // Default task
-    grunt.registerTask('default', ['clean', 'bower_concat', 'grunt:angular_bootstrap', 'html2js', 'less', 'concat', 'exec']);
-    grunt.registerTask('build', ['default', 'uglify']);
+    grunt.registerTask('default', ['clean', 'bower_concat', 'grunt:angular_bootstrap', 'html2js', 'less:dev', 'concat', 'exec']);
+    grunt.registerTask('build', ['default', 'less:build', 'ngAnnotate', 'uglify']);
 
 };

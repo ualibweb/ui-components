@@ -16,7 +16,8 @@
     <link rel="stylesheet" id="roots_cdn-css" href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700|Oxygen:300,400,700|Open+Sans:300,400,600,700|EB+Garamond|Lato:300,400,700" type="text/css" media="all">
     <link rel="stylesheet" href="https://rawgit.com/ualibweb/roots-ualib/master/assets/css/main.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link href="../dist/ualib-ui.css" rel="stylesheet">
+    <link href="../dist/ualib-ui.min.css" rel="stylesheet">
+    <!--<link href="../dist/ualib-ui.css" rel="stylesheet">-->
     {{{styles}}}
 </head>
 <body>
@@ -71,7 +72,17 @@
                         <a href="https://github.com/ualibweb/ualibweb.github.io" target="_new"><span class="fa fa-github"></span> Github</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quick Links</a>
+                        <a href="#" class="dropdown-toggle">Quick Links</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="http://getbootstrap.com/"><span class="fa fa-fw fa-border">B</span> Bootstrap Docs</a></li>
+                            <li><a href="http://fortawesome.github.io/Font-Awesome/"><span class="fa fa-fw fa-flag"></span> Font Awesome</a></li>
+                            <li><a href="https://www.google.com/fonts"><span class="fa fa-fw fa-paint-brush"></span> Google Fonts</a></li>
+                            <li><a href="http://webaim.org/resources/contrastchecker/"><span class="fa fa-fw fa-adjust"></span> WCAG AA Contrast Checker</a></li>
+                            <li><a href="https://color.adobe.com"><span class="fa fa-fw fa-eyedropper"></span> Adobe Color CC</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Links</a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="http://getbootstrap.com/"><span class="fa fa-fw fa-border">B</span> Bootstrap Docs</a></li>
                             <li><a href="http://fortawesome.github.io/Font-Awesome/"><span class="fa fa-fw fa-flag"></span> Font Awesome</a></li>
@@ -178,8 +189,9 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/holder/2.4.0/holder.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
 <script src="../dist/vendor.js"></script>
-<script src="../dist/ualib-ui-templates.js"></script>
-<script src="../dist/ualib-ui.js"></script>
+<!--<script src="../dist/ualib-ui-templates.js"></script>-->
+<!--<script src="../dist/ualib-ui.js"></script>-->
+<script src="../dist/ualib-ui.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
