@@ -98,14 +98,13 @@ module.exports = function(grunt){
                 prereleaseName: false,
                 regExp: false
             }
-        },
-        clean: ['dist']
+        }
     });
 
     require('load-grunt-tasks')(grunt);
 
     // Default task
-    grunt.registerTask('default', ['clean', 'bower_concat', 'grunt:angular_bootstrap', 'html2js', 'less:dev', 'concat', 'exec']);
+    grunt.registerTask('default', ['bower_concat', 'grunt:angular_bootstrap', 'html2js', 'less:dev', 'concat', 'exec']);
     grunt.registerTask('build', ['default', 'less:build', 'ngAnnotate', 'uglify']);
 
 };
