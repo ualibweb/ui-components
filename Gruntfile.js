@@ -50,7 +50,7 @@ module.exports = function(grunt){
             },
             build: {
                 files: {
-                    'dist/<%= pkg.name %>.min.css': ["src/**/*.less", "!src/**/service-cards.less"]
+                    'dist/ualib-ui.min.css': ["src/**/*.less", "!src/**/service-cards.less"]
                 },
                 options: {
                     compress: true
