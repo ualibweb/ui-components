@@ -5,6 +5,7 @@ module.exports = function(grunt){
             components: {
                 src: [
                     'bower_components/angular-bootstrap/dist/ui-bootstrap-custom-tpls-0.12.1.js', //not "vendor" since custom build
+                    'tmp/templates.js',
                     'src/**/*.js',
                     '!src/stepcard/**/*.js'
                 ],
@@ -18,7 +19,7 @@ module.exports = function(grunt){
                     process: true
                 },
                 src: ['src/**/*.tpl.html', '!src/stepcard/**/*.tpl.html'],
-                dest: 'dist/ualib-ui-templates.js',
+                dest: 'tmp/templates.js',
                 module: 'ualib.ui.templates'
             }
         },
@@ -37,10 +38,13 @@ module.exports = function(grunt){
         uglify:{
             dist: {
                 files: [{
-                    src: ['dist/<%= pkg.name %>-templates.js', 'dist/<%= pkg.name %>.js'],
+                    src: ['dist/<%= pkg.name %>.js'],
                     dest: 'dist/ualib-ui.min.js'
                 }]
             }
+        },
+        clean: {
+            app: ['tmp/']
         },
         less: {
             dev:{
@@ -104,7 +108,7 @@ module.exports = function(grunt){
     require('load-grunt-tasks')(grunt);
 
     // Default task
-    grunt.registerTask('default', ['bower_concat', 'grunt:angular_bootstrap', 'html2js', 'less:dev', 'concat', 'exec']);
+    grunt.registerTask('default', ['bower_concat', 'grunt:angular_bootstrap', 'html2js', 'less:dev', 'concat', 'exec', 'clean']);
     grunt.registerTask('build', ['default', 'less:build', 'ngAnnotate', 'uglify']);
 
 };
