@@ -2,7 +2,7 @@
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
 
- * Version: 0.12.1 - 2015-09-04
+ * Version: 0.12.1 - 2015-11-12
  * License: MIT
  */
 angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.transition","ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.bindHtml","ui.bootstrap.buttons","ui.bootstrap.dateparser","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.timepicker"]);
@@ -2628,6 +2628,30 @@ angular.module('ualib.ui')
             }
         };
     });
+angular.module('ualib.ui')
+
+    .filter('highlight',['$sce', function($sce) {
+        return function(text, filterPhrase) {
+            if (filterPhrase) {
+                var tag_re = /(<\S[^><]*>)/g;
+                var tokens = [].concat.apply([], filterPhrase.split('"').map(function(v,i){
+                    return i%2 ? v : v.split(' ');
+                })).filter(Boolean).join('|');
+
+                var filter_re = new RegExp('(' + tokens + ')', 'gi');
+                text = text.split(tag_re).map(function(string) {
+                    if (string.match(tag_re)) {
+                        return string;
+                    } else {
+                        return string.replace(filter_re,
+                            '<span class="mark">$1</span>');
+                    }
+                }).join('');
+
+            }
+            return $sce.trustAsHtml(text);
+        };
+    }]);
 angular.module('ualib.ui')
 
   .directive('pageWithMenu', [function(){
