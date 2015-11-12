@@ -2441,6 +2441,7 @@ angular.module("tabs/templates/tabset.tpl.html", []).run(["$templateCache", func
 }]);
 
 angular.module('ualib.ui', [
+    'ngSanitize',
     'ui.bootstrap',
     'duScroll',
     'ualib.ui.templates'
