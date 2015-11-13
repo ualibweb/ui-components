@@ -1,5 +1,4 @@
 angular.module('ualib.ui', [
-    'ngSanitize',
     'ui.bootstrap',
     'duScroll',
     'ualib.ui.templates'

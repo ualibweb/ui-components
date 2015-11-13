@@ -1,10 +1,10 @@
 angular.module('ualib.ui')
 
-    .filter('highlight',['$sce', function($sce) {
-        return function(text, filterPhrase) {
+    .filter('highlight',[function() {
+        return function(text, filterPhrase, strict) {
             if (filterPhrase) {
                 var tag_re = /(<\S[^><]*>)/g;
-                var tokens = [].concat.apply([], filterPhrase.split('"').map(function(v,i){
+                var tokens = strict ? filterPhrase : [].concat.apply([], filterPhrase.split('"').map(function(v,i){
                     return i%2 ? v : v.split(' ');
                 })).filter(Boolean).join('|');
 
@@ -19,6 +19,6 @@ angular.module('ualib.ui')
                 }).join('');
 
             }
-            return $sce.trustAsHtml(text);
+            return text;
         };
     }]);
