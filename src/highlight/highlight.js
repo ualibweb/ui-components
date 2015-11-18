@@ -2,7 +2,7 @@ angular.module('ualib.ui')
 
     .filter('highlight',[function() {
         return function(text, filterPhrase, strict) {
-            if (filterPhrase) {
+            if (filterPhrase && text) {
                 var tag_re = /(<\S[^><]*>)/g;
                 var tokens = strict ? filterPhrase : [].concat.apply([], filterPhrase.split('"').map(function(v,i){
                     return i%2 ? v : v.split(' ');

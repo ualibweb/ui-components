@@ -2,7 +2,7 @@
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
 
- * Version: 0.12.1 - 2015-11-13
+ * Version: 0.12.1 - 2015-11-17
  * License: MIT
  */
 angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.transition","ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.bindHtml","ui.bootstrap.buttons","ui.bootstrap.dateparser","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.timepicker"]);
@@ -2632,7 +2632,7 @@ angular.module('ualib.ui')
 
     .filter('highlight',[function() {
         return function(text, filterPhrase, strict) {
-            if (filterPhrase) {
+            if (filterPhrase && text) {
                 var tag_re = /(<\S[^><]*>)/g;
                 var tokens = strict ? filterPhrase : [].concat.apply([], filterPhrase.split('"').map(function(v,i){
                     return i%2 ? v : v.split(' ');
