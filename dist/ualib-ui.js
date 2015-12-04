@@ -2,7 +2,7 @@
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
 
- * Version: 0.12.1 - 2015-11-17
+ * Version: 0.12.1 - 2015-12-04
  * License: MIT
  */
 angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.transition","ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.bindHtml","ui.bootstrap.buttons","ui.bootstrap.dateparser","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.timepicker"]);
@@ -2653,6 +2653,28 @@ angular.module('ualib.ui')
         };
     }]);
 angular.module('ualib.ui')
+
+    .run(['$rootScope', '$document', '$location', '$timeout', function($rootScope, $document, $location, $timeout) {
+        if(!window.history || !history.replaceState) {
+            return;
+        }
+
+        $rootScope.$on('PageWithMenu:loaded', function(){
+            var anchor = $location.hash() || $location.path().split('/')[1];
+            if (anchor){
+                $timeout(function(){
+                    $document.scrollToElement(angular.element(document.getElementById(anchor)));
+                }, 200);
+            }
+        });
+        $rootScope.$on('duScrollspy:becameActive', function($event, $element, $target){
+            //Automaticly update location
+            var hash = $element.find('a').eq(0).prop('hash');
+            if (hash) {
+                history.replaceState(null, null, hash);
+            }
+        });
+    }])
 
   .directive('pageWithMenu', [function(){
     return{

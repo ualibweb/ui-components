@@ -1,5 +1,27 @@
 angular.module('ualib.ui')
 
+    .run(['$rootScope', '$document', '$location', '$timeout', function($rootScope, $document, $location, $timeout) {
+        if(!window.history || !history.replaceState) {
+            return;
+        }
+
+        $rootScope.$on('PageWithMenu:loaded', function(){
+            var anchor = $location.hash() || $location.path().split('/')[1];
+            if (anchor){
+                $timeout(function(){
+                    $document.scrollToElement(angular.element(document.getElementById(anchor)));
+                }, 200);
+            }
+        });
+        $rootScope.$on('duScrollspy:becameActive', function($event, $element, $target){
+            //Automaticly update location
+            var hash = $element.find('a').eq(0).prop('hash');
+            if (hash) {
+                history.replaceState(null, null, hash);
+            }
+        });
+    }])
+
   .directive('pageWithMenu', [function(){
     return{
       restrict: 'C',
