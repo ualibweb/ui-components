@@ -39,7 +39,7 @@ angular.module('ualib.ui')
     }
   }])
 
-  .directive('pageSection', [function(){
+  .directive('pageSection', ['$rootScope', function($rootScope){
     return {
       require: '^pageWithMenu',
       restrict: 'EC',
@@ -58,6 +58,7 @@ angular.module('ualib.ui')
             scope.section = title.replace(/[\s\-\\/"'&]+/g, '_');
             Ctrl.addSection({title: title, icon: icon, link: scope.section});
         }
+          $rootScope.$broadcast('PageWithMenu:loaded');
       }
     }
   }]);
