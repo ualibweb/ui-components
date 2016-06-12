@@ -14,7 +14,7 @@ angular.module('ualib.ui')
             }
         });
         $rootScope.$on('duScrollspy:becameActive', function($event, $element, $target){
-            //Automaticly update location
+            //Automatically update location
             var hash = $element.find('a').eq(0).prop('hash').substr(1);
             if (hash) {
                 //history.replaceState(null, null, hash);
