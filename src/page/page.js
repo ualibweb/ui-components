@@ -24,6 +24,7 @@ angular.module('ualib.ui')
                 else{
                     $location.path(hash);
                 }
+                $location.replace();
                 $rootScope.$apply();
             }
         });
