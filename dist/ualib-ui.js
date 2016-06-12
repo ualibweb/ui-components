@@ -2,7 +2,7 @@
  * angular-ui-bootstrap
  * http://angular-ui.github.io/bootstrap/
 
- * Version: 0.12.1 - 2015-12-04
+ * Version: 0.12.1 - 2016-06-10
  * License: MIT
  */
 angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.transition","ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.bindHtml","ui.bootstrap.buttons","ui.bootstrap.dateparser","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.timepicker"]);
@@ -2403,7 +2403,7 @@ angular.module("page/templates/page.tpl.html", []).run(["$templateCache", functi
     "<div class=\"row\" ng-cloak>\n" +
     "    <div class=\"col-md-9\" ng-transclude></div>\n" +
     "  <div class=\"col-md-3 page-section-menu\">\n" +
-    "    <div ui-scrollfix bound-by-parent class=\"hidden-sm\">\n" +
+    "    <div ui-scrollfix bound-by-parent class=\"hidden-sm hidden-xs\">\n" +
     "      <ul class=\"nav nav-pills nav-stacked\">\n" +
     "        <li ng-repeat=\"section in menu\" du-scrollspy=\"{{section.link}}\">\n" +
     "          <a ng-href=\"#{{section.link}}\" du-smooth-scroll>\n" +
@@ -2678,6 +2678,7 @@ angular.module('ualib.ui')
                 else{
                     $location.path(hash);
                 }
+                $location.replace();
                 $rootScope.$apply();
             }
         });
@@ -2765,18 +2766,17 @@ angular.module('ualib.ui').directive('uiScrollfix', [
             require: '^?uiScrollfixTarget',
             link: function (scope, elm, attrs, uiScrollfixTarget) {
                 var absolute = true,
-                    shift = -30,
-                    elmWidth = elm[0].offsetWidth,
-                    fixLimit,
-                    bottomLimit,
+                    shift = -80,
+                    fixLimit = 0,
+                    fixedOffsetTop = 0,
+                    fluidWidth = attrs.hasOwnProperty('uiScrollfixFluidWidth'),
                     $target = uiScrollfixTarget && uiScrollfixTarget.$element || angular.element($window);
                 var parent = angular.isDefined(attrs.boundByParent) ? elm.parent() : null;
-               /* console.log(angular.isDefined(attrs.boundByParent));
-                console.log(attrs);*/
 
                 if (!attrs.uiScrollfix) {
                     absolute = false;
                 } else if (typeof attrs.uiScrollfix === 'string') {
+
                     // charAt is generally faster than indexOf: http://jsperf.com/indexof-vs-charat
                     if (attrs.uiScrollfix.charAt(0) === '-') {
                         absolute = false;
@@ -2794,8 +2794,10 @@ angular.module('ualib.ui').directive('uiScrollfix', [
                     var offset = uiScrollfixTarget ? $target[0].scrollTop : getWindowScrollTop();
 
                     if (parent !== null){
-                        if (parent[0].offsetHeight + loopedOffset(parent[0]).top <= offset + elm[0].offsetHeight){
+                        //console.log(parent[0].offsetHeight+' + '+loopedOffset(parent[0]).top+' <= ('+offset+' + '+elm[0].offsetHeight+' + '+' + '+fixedOffsetTop+')');
+                        if (parent[0].offsetHeight + loopedOffset(parent[0]).top <= (offset + elm[0].offsetHeight + fixedOffsetTop)){
                             elm.addClass('scrollfix-bottom-limit');
+
                         }
                         else if (elm.hasClass('scrollfix-bottom-limit')){
                             elm.removeClass('scrollfix-bottom-limit');
@@ -2803,13 +2805,19 @@ angular.module('ualib.ui').directive('uiScrollfix', [
                     }
 
                     if (!elm.hasClass('scrollfix') && offset > limit) {
-                        var width = elm[0].offsetWidth;
-                        elm.css('width', width + 'px');
+                        if (!fluidWidth){
+                            var width = elm[0].offsetWidth;
+                            elm.css('width', width + 'px');
+                        }
                         elm.addClass('scrollfix');
                         fixLimit = limit;
+                        fixedOffsetTop = elm[0].offsetTop;
                     } else if (elm.hasClass('scrollfix') && offset < fixLimit) {
                         elm.removeClass('scrollfix');
-                        elm.css('width', 'auto');
+                        if (!fluidWidth){
+                            elm.css('width', 'auto');
+                        }
+                        fixedOffsetTop = 0;
                     }
                 }
 

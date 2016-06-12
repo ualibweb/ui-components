@@ -40,18 +40,17 @@ angular.module('ualib.ui').directive('uiScrollfix', [
             require: '^?uiScrollfixTarget',
             link: function (scope, elm, attrs, uiScrollfixTarget) {
                 var absolute = true,
-                    shift = -30,
-                    elmWidth = elm[0].offsetWidth,
-                    fixLimit,
-                    bottomLimit,
+                    shift = -80,
+                    fixLimit = 0,
+                    fixedOffsetTop = 0,
+                    fluidWidth = attrs.hasOwnProperty('uiScrollfixFluidWidth'),
                     $target = uiScrollfixTarget && uiScrollfixTarget.$element || angular.element($window);
                 var parent = angular.isDefined(attrs.boundByParent) ? elm.parent() : null;
-               /* console.log(angular.isDefined(attrs.boundByParent));
-                console.log(attrs);*/
 
                 if (!attrs.uiScrollfix) {
                     absolute = false;
                 } else if (typeof attrs.uiScrollfix === 'string') {
+
                     // charAt is generally faster than indexOf: http://jsperf.com/indexof-vs-charat
                     if (attrs.uiScrollfix.charAt(0) === '-') {
                         absolute = false;
@@ -69,8 +68,10 @@ angular.module('ualib.ui').directive('uiScrollfix', [
                     var offset = uiScrollfixTarget ? $target[0].scrollTop : getWindowScrollTop();
 
                     if (parent !== null){
-                        if (parent[0].offsetHeight + loopedOffset(parent[0]).top <= offset + elm[0].offsetHeight){
+                        //console.log(parent[0].offsetHeight+' + '+loopedOffset(parent[0]).top+' <= ('+offset+' + '+elm[0].offsetHeight+' + '+' + '+fixedOffsetTop+')');
+                        if (parent[0].offsetHeight + loopedOffset(parent[0]).top <= (offset + elm[0].offsetHeight + fixedOffsetTop)){
                             elm.addClass('scrollfix-bottom-limit');
+
                         }
                         else if (elm.hasClass('scrollfix-bottom-limit')){
                             elm.removeClass('scrollfix-bottom-limit');
@@ -78,13 +79,19 @@ angular.module('ualib.ui').directive('uiScrollfix', [
                     }
 
                     if (!elm.hasClass('scrollfix') && offset > limit) {
-                        var width = elm[0].offsetWidth;
-                        elm.css('width', width + 'px');
+                        if (!fluidWidth){
+                            var width = elm[0].offsetWidth;
+                            elm.css('width', width + 'px');
+                        }
                         elm.addClass('scrollfix');
                         fixLimit = limit;
+                        fixedOffsetTop = elm[0].offsetTop;
                     } else if (elm.hasClass('scrollfix') && offset < fixLimit) {
                         elm.removeClass('scrollfix');
-                        elm.css('width', 'auto');
+                        if (!fluidWidth){
+                            elm.css('width', 'auto');
+                        }
+                        fixedOffsetTop = 0;
                     }
                 }
 

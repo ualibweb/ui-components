@@ -1,10 +1,15 @@
 // Scrollfix
 //
-// The `.ui-scrollfix` class allows elements to become fixed to the page before a user scrolls past them.
+// The `.ui-scrollfix` class or `ui-scrollfix` attribute allows elements to become fixed to the page before a user scrolls past them.
+// When an element becomes scrollfixed, the `.scrollfix` class is added to it.
 // This is great for sub-navigation or column headers for large tables of data.
 //
-// Elements with `.ui-scrollfix` class will become fixed when they are `30px` from the top of the page.
+// Elements with the `.ui-scrollfix` class or `ui-scrollfix` attribute will become fixed when they are `80px` *(default)* from the top of the viewport.
+// Assigning a numeric value to the `ui-scrollfix` attribute will override the default `80px` (e.g., `ui-scrollfix="100"`).
 // Adding the `bound-by-parent` attribute to a `ui-scrollfix` element, will ensure is stays inside it's parent element's boundaries.
+// Adding `ui-scrollfix-fuild-width` will allow scroll fixed elements to have fluid widths. (Since *position: fixed* elements do not inherit the width of
+// their parent elements, `ui-scrollfix` manually preserves a scroll-fixed element's previous width by default).
+//
 //
 // The [Pages &amp; Submenus](section-layout.html#layout-pages_submenus) described in the Layout section have
 // scroll fixed menus applied to the by default. The `Page with menu` component also uses the `bound-by-parent` option to ensure the menu
@@ -13,6 +18,9 @@
 // CodeTemplate:
 //    <div class="ui-scrollfix">I'm not going to be sticky in the docs! They'd just be annoying.</div>
 //    <div class="ui-scrollfix" bound-by-parent>I'm sticky too! But I'll stay inside my parent element's boundaries</div>
+//    <div ui-scrollfix>I'm scrollfixed using the attribute, instead of the class</div>
+//    <div ui-scrollfix="10" bound-by-parent>Become fixed 10px from the top, but stop being fixed before going outside parent element</div>
+//    <div style="width: 100%; height: 10px" ui-scrollfix="0" ui-scrollfix-fluid-width>I'll be sitting atop the page, spanning it's width, regardless if window size.</div>
 //
 // Icon: fa-paperclip
 //
@@ -23,7 +31,7 @@
 
 .scrollfix {
   position: fixed;
-  top: 30px;
+  top: 80px;
 }
 
 .scrollfix-bottom-limit{
